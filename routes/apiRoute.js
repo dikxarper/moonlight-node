@@ -1,8 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/userModel');
+const uploadAvatar = require('../middleware/uploadAvatar');
+const uploadConquest = require('../middleware/uploadConquest');
 
-router.post("/user/create", async (req, res) => {
+
+router.post("/user/create", uploadAvatar.single('avatar'), uploadConquest.single('conquest'), async (req, res) => {
     const { avatar, conquest } = req.files;
     const { fullName, history } = req.body;
 

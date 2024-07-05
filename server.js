@@ -29,15 +29,15 @@ app.use('/api', apiRoute)
 
 const start = async () => {
     try {
-        // await mongoose
-        //     .connect(process.env.MONGODB_URI)
-        //     .then(() => {
-        //         console.log("Database is connected")
-        //     })
-        //     .catch((err) => {
-        //         logger.error(err.message)
-        //         console.error('Internal server error')
-        //     })
+        await mongoose
+            .connect(process.env.MONGODB_URI)
+            .then(() => {
+                console.log("Database is connected")
+            })
+            .catch((err) => {
+                logger.error(err.message)
+                console.error('Internal server error')
+            })
         app.listen(process.env.PORT, () => {
             console.log(`http://localhost:${process.env.PORT}`)
         })
